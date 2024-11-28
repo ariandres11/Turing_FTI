@@ -41,5 +41,17 @@ public class Transicion
         return this.estadoDestino;
     }
 
+    public string ToString(){
+        return $" Leo: " + 
+        this.simboloLeido + 
+        " Escribo: " + 
+        this.simboloAEscribir +
+        " Accion: " + 
+        this.nombreAccion +
+        " Estado Origen " +
+        this.estadoOrigen + 
+        " Estado Destino " + 
+        this.estadoDestino;
+    }
 
 }

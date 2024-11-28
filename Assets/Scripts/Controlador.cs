@@ -4,5 +4,6 @@ using UnityEngine;
 
 
 public class Controlador : MonoBehaviour{
+    //Una vez que se terminaron de ca
         
 }

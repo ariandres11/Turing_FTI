@@ -16,6 +16,10 @@ public class Estado{
         this.transicionesOrigen = new List<Transicion>{};
     }
 
+    public string GetNombre(){ 
+        return nombre; 
+    }
+
     public bool EsAceptador(){
         return aceptador;
     }
@@ -46,6 +50,16 @@ public class Estado{
 
     public List<Transicion> GetTransicionesDestino(){
         return this.transicionesDestino;
+    }
+
+
+    public string ToString(){
+        return $" Nombre: " + 
+        this.nombre +
+        " Aceptador: " +
+        this.aceptador + 
+        " Inicial " +
+        this.inicial;
     }
     
 }

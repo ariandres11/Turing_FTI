@@ -4,13 +4,12 @@ using UnityEngine;
 using SFB;
 using System.IO;
 public class TXTReader : MonoBehaviour{
-    private Hashtable tablaEquipos = new Hashtable();
-    private Hashtable tablaTransiciones = new Hashtable();
+    [SerializeField] private SimulationManager simulationManager;
     public void Inicializar() {
         OpenFileBrowser("estados"); 
         OpenFileBrowser("transiciones");
         ImprimirTablas();
-    } 
+    }
     void OpenFileBrowser(string elementoAPedir) { 
         // Permitir seleccionar solo un archivo 
         var paths = StandaloneFileBrowser.OpenFilePanel("Selecciona un archivo de " + elementoAPedir, "", "txt", false); 
@@ -33,11 +32,12 @@ public class TXTReader : MonoBehaviour{
                         bool aceptador = bool.Parse(values[1]); 
                         bool inicial = bool.Parse(values[2]);
                         Debug.Log($"Archivo de estados: {Path.GetFileName(filePath)} - Nombre: {nombre}, Aceptador: {aceptador}, Inicial: {inicial}"); 
-                        //Crear instancia de estado y agregarla a la lista
-                        tablaEquipos.Add(nombre, new Estado(nombre, aceptador, inicial));
-                        } 
+                        //Crear instancia de estado y agregarla a la list
+                        simulationManager.AddEstado(new Estado(nombre, aceptador, inicial));
+                        }
                     break; 
                 case "transiciones": // Leer transiciones 
+                    Hashtable tablaEstados = simulationManager.GetEstados();
                     foreach (var line in lines) { 
                         var values = line.Split(';'); 
                         // Asumiendo que el TXT tiene cinco columnas 
@@ -46,9 +46,11 @@ public class TXTReader : MonoBehaviour{
                         string nombreAccion = values[2]; 
                         string nombreEstadoOrigen = values[3]; 
                         string nombreEstadoDestino = values[4]; 
-                        Estado estadoOrigen = (Estado) tablaEquipos[nombreEstadoOrigen];
-                        Estado estadoDestino = (Estado) tablaEquipos[nombreEstadoDestino];
+                        Estado estadoOrigen = (Estado) tablaEstados[nombreEstadoOrigen];
+                        Estado estadoDestino = (Estado) tablaEstados[nombreEstadoDestino];
+                        simulationManager.AddTransicion(new Transicion(leo,escribo,nombreAccion, estadoOrigen, estadoDestino));
 
+                        //tablaTransiciones.Add("t" + i, new Transicion(leo,escribo,nombreAccion, estadoOrigen, estadoDestino));
                         Debug.Log($"Archivo de transiciones: {Path.GetFileName(filePath)} - Leo: {leo}, Escribo: {escribo}, Nombre Accion: {nombreAccion}, Nombre Estado Origen: {nombreEstadoOrigen}, Nombre Estado Destino: {nombreEstadoDestino}"); 
                     } 
                     break; 
@@ -62,8 +64,9 @@ public class TXTReader : MonoBehaviour{
     }
 
     void ImprimirTablas(){
-        PrintHashtable(tablaEquipos);
-        PrintHashtable(tablaTransiciones);
+
+        PrintHashtable(simulationManager.GetEstados());
+        PrintHashtable(simulationManager.GetTransiciones());
     }
 
     public static void PrintHashtable(Hashtable hashtable) { 
