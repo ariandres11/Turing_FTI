@@ -41,5 +41,5 @@ public class Transicion
         return this.estadoDestino;
     }
 
-
+    public override string ToString() { return $"Transicion - Leo: {simboloLeido}, Escribo: {simboloAEscribir}, Nombre Accion: {nombreAccion}, Estado Origen: {estadoOrigen.GetNombre()}, Estado Destino: {estadoDestino.GetNombre()}"; }
 }

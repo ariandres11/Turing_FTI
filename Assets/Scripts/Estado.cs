@@ -47,5 +47,9 @@ public class Estado{
     public List<Transicion> GetTransicionesDestino(){
         return this.transicionesDestino;
     }
+    public string GetNombre(){
+        return nombre;
+    }
     
+    public override string ToString() { return $"Estado: {nombre}, Aceptador: {aceptador}, Inicial: {inicial}"; }
 }
