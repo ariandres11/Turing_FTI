@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e92c24ac71cd52baada71674d527e0, type: 3}
+  m_Name: Maq_Ante
+  m_EditorClassIdentifier: 
+  nombre: Maq_Ante
+  estados:
+  - {fileID: 11400000, guid: 29eacede21b88584597a5b99282eaa81, type: 2}
+  - {fileID: 11400000, guid: b6795ada705e10cdeab98b9ba2498d17, type: 2}
+  - {fileID: 11400000, guid: bce4bf798da1809a58f8806ed047132e, type: 2}
+  transiciones:
+  - {fileID: 11400000, guid: efc0ce52aba1856b0ad3eebbb167ecec, type: 2}
+  - {fileID: 11400000, guid: 7647eb10e47341623839df29ece16c58, type: 2}
+  - {fileID: 11400000, guid: 74d9ffe888e5a817e95eefe614133358, type: 2}
+  - {fileID: 11400000, guid: 4c4cd30b5c7aa1ad59568f38ae7462ee, type: 2}
+  - {fileID: 11400000, guid: 8887f2b0585e4a62b9d0e92e5d05e1d7, type: 2}
+  - {fileID: 11400000, guid: 324d862003181899999ec05c8786a59a, type: 2}
